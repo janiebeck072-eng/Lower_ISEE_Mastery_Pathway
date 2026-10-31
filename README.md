@@ -18,3 +18,8 @@ You may also test the activity locally by opening `index.html` in a browser.
 - Retaking the diagnostic resets earlier practice results and the final assessment.
 - The final check is available after the diagnostic. The teacher can decide when the student is ready; it is not locked behind every module.
 - Questions are original and inspired by Lower ISEE math skills and formats. This is not an official ERB exam, and scores are not official ISEE scaled scores.
+
+
+## Import / export progress
+
+Open **Import / Export** in the top navigation. **Download progress backup** saves a JSON file with assessments, skill mastery, practice attempts, and any unfinished activity. To restore it on another device, open the same website, choose the JSON file, and click **Import progress**. Import replaces the current browser's progress after confirmation. Backups are local files; no server account or cloud synchronization is required. Keep backup files private because they contain student names and learning records.
