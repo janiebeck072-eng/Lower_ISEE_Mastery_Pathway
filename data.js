@@ -1,0 +1,83 @@
+/* Original Lower ISEE-style math questions. No copyrighted test questions reproduced. */
+window.ISEE={topics:[
+{id:'place',domain:'Numbers & Operations',name:'Place Value & Number Sense',tip:'Read the position of each digit; compare values from left to right.',example:'In 46,382, the 6 represents 6,000.'},
+{id:'integers',domain:'Numbers & Operations',name:'Integer Operations',tip:'Use the number line and sign rules. Subtracting a negative means adding.',example:'−8 + 13 = 5.'},
+{id:'fractions',domain:'Numbers & Operations',name:'Fractions & Mixed Numbers',tip:'Use a common denominator to add or subtract. Multiply numerators and denominators to multiply.',example:'1/3 + 1/6 = 2/6 + 1/6 = 1/2.'},
+{id:'decimals',domain:'Numbers & Operations',name:'Decimals & Percents',tip:'Align decimal points; percent means out of 100.',example:'25% of 80 = 0.25 × 80 = 20.'},
+{id:'factors',domain:'Numbers & Operations',name:'Factors, Multiples & Exponents',tip:'List factors or multiples systematically; evaluate exponents before addition.',example:'2³ + 5 = 8 + 5 = 13.'},
+{id:'order',domain:'Numbers & Operations',name:'Order of Operations',tip:'Parentheses, exponents, multiplication/division left to right, then addition/subtraction.',example:'3 + 4 × 5 = 3 + 20 = 23.'},
+{id:'rates',domain:'Quantitative Reasoning',name:'Ratios, Rates & Proportions',tip:'Find the value for one unit, then scale up; keep corresponding quantities aligned.',example:'3 notebooks cost $12, so one costs $4.'},
+{id:'algebra',domain:'Quantitative Reasoning',name:'Patterns, Expressions & Equations',tip:'Undo operations in reverse order; for patterns, identify a consistent rule.',example:'3x + 4 = 19 → 3x = 15 → x = 5.'},
+{id:'angles',domain:'Geometry & Measurement',name:'Angles & Shape Properties',tip:'Angles on a straight line sum to 180°; a triangle’s angles sum to 180°.',example:'A triangle with angles 50° and 60° has a third angle of 70°.'},
+{id:'measure',domain:'Geometry & Measurement',name:'Perimeter, Area & Circles',tip:'Perimeter is distance around; area is space inside. Rectangle area = length × width.',example:'A 6-by-4 rectangle has area 24 square units.'},
+{id:'data',domain:'Data & Probability',name:'Data, Graphs & Averages',tip:'Mean = sum ÷ count. Median is the middle value after sorting.',example:'The mean of 4, 6, and 8 is 6.'},
+{id:'prob',domain:'Data & Probability',name:'Probability & Logical Reasoning',tip:'Probability = favorable outcomes ÷ total equally likely outcomes.',example:'With 2 red and 3 blue marbles, P(red) = 2/5.'}
+]};
+const Q=(sub,stem,choices,answer,explain)=>({sub,stem,choices,answer,explain});
+window.ISEE.diagnostic=[
+Q('place','What is the value of the 7 in 472,615?',['7','700','7,000','70,000'],3,'The 7 is in the ten-thousands place: 70,000.'),
+Q('place','Which number is greatest?',['0.809','0.89','0.819','0.88'],1,'Compare decimal places: 0.890 is greater than 0.880.'),
+Q('place','Round 38,649 to the nearest hundred.',['38,600','38,700','39,000','38,650'],0,'The tens digit is 4, so keep the hundreds digit.'),
+Q('integers','What is −9 + 14?',['−23','−5','5','23'],2,'Move 14 steps right from −9 to reach 5.'),
+Q('integers','What is 6 − (−8)?',['−14','−2','2','14'],3,'Subtracting a negative is adding: 6 + 8 = 14.'),
+Q('integers','What is (−4) × 7?',['−28','−11','11','28'],0,'A negative times a positive is negative.'),
+Q('fractions','What is 1/4 + 3/8?',['4/12','1/2','5/8','7/8'],2,'1/4 = 2/8, so 2/8 + 3/8 = 5/8.'),
+Q('fractions','What is 2/3 of 18?',['6','9','12','15'],2,'18 ÷ 3 × 2 = 12.'),
+Q('fractions','What is 2 1/2 − 3/4?',['1 1/4','1 3/4','2 1/4','2 3/4'],1,'2 2/4 − 3/4 = 1 3/4.'),
+Q('decimals','What is 0.6 × 0.4?',['0.024','0.24','2.4','24'],1,'6 × 4 = 24 with two decimal places: 0.24.'),
+Q('decimals','What is 35% of 200?',['35','60','70','85'],2,'0.35 × 200 = 70.'),
+Q('decimals','A $50 jacket is reduced by 20%. What is the sale price?',['$10','$30','$40','$45'],2,'20% of $50 is $10; subtract from $50.'),
+Q('factors','What is the greatest common factor of 18 and 24?',['3','6','9','12'],1,'The largest number dividing both is 6.'),
+Q('factors','What is the least common multiple of 4 and 6?',['10','12','18','24'],1,'12 is the first common multiple.'),
+Q('factors','What is 3² + 2³?',['13','15','17','25'],2,'9 + 8 = 17.'),
+Q('order','Evaluate 8 + 3 × 4.',['20','44','32','28'],0,'Multiply first: 8 + 12 = 20.'),
+Q('order','Evaluate (18 − 6) ÷ 3 + 2.',['4','6','8','12'],1,'12 ÷ 3 + 2 = 6.'),
+Q('order','Evaluate 5² − 4 × 3.',['9','13','21','63'],1,'25 − 12 = 13.'),
+Q('rates','Four pencils cost $6. What do 10 pencils cost at the same rate?',['$12','$15','$18','$24'],1,'Each pencil costs $1.50, so 10 cost $15.'),
+Q('rates','A car travels 150 miles in 3 hours. What is its average speed?',['30 mph','45 mph','50 mph','75 mph'],2,'150 ÷ 3 = 50 miles per hour.'),
+Q('rates','The ratio of red to blue beads is 2:5. If there are 8 red beads, how many blue beads are there?',['12','16','20','24'],2,'Multiply both parts of the ratio by 4: 5 × 4 = 20.'),
+Q('algebra','Solve x + 17 = 42.',['15','25','35','59'],1,'Subtract 17 from both sides: x = 25.'),
+Q('algebra','What is the next number in 3, 7, 11, 15, …?',['17','18','19','21'],2,'Add 4 each time.'),
+Q('algebra','Solve 4x − 3 = 21.',['4','5','6','8'],2,'Add 3 and divide by 4: x = 6.'),
+Q('angles','Two angles form a straight line. One is 125°. What is the other?',['35°','45°','55°','65°'],2,'180° − 125° = 55°.'),
+Q('angles','A triangle has angles 45° and 65°. What is its third angle?',['60°','70°','80°','90°'],1,'180° − 45° − 65° = 70°.'),
+Q('angles','Which figure always has four equal sides and four right angles?',['Rectangle','Rhombus','Square','Trapezoid'],2,'A square has both properties.'),
+Q('measure','What is the perimeter of a rectangle 8 cm long and 5 cm wide?',['13 cm','26 cm','40 cm','80 cm'],1,'2(8 + 5) = 26 cm.'),
+Q('measure','What is the area of a triangle with base 10 and height 6?',['16','30','60','120'],1,'1/2 × 10 × 6 = 30 square units.'),
+Q('measure','A circle has diameter 12 cm. What is its radius?',['3 cm','6 cm','12 cm','24 cm'],1,'Radius is half of diameter.'),
+Q('data','What is the mean of 6, 8, 10, and 12?',['8','9','10','12'],1,'(6 + 8 + 10 + 12) ÷ 4 = 9.'),
+Q('data','What is the median of 3, 9, 5, 12, 7?',['5','7','9','12'],1,'Sort: 3, 5, 7, 9, 12; middle is 7.'),
+Q('data','A class read 4, 6, 6, 7, and 9 books. What is the mode?',['4','6','7','9'],1,'6 appears most frequently.'),
+Q('prob','A bag has 3 green and 7 yellow counters. What is P(green)?',['3/7','3/10','7/10','1/3'],1,'3 favorable out of 10 total.'),
+Q('prob','A fair six-sided number cube is rolled. What is P(even)?',['1/6','1/3','1/2','2/3'],2,'3 even numbers out of 6: 3/6 = 1/2.'),
+Q('prob','A coin is flipped twice. How many equally likely outcomes are possible?',['2','3','4','8'],2,'HH, HT, TH, TT: four outcomes.')
+];
+window.ISEE.final=[
+Q('place','What is the value of the 8 in 583,204?',['8','800','8,000','80,000'],3,'8 is in the ten-thousands place.'),Q('place','Which decimal is least?',['0.504','0.54','0.45','0.405'],3,'0.405 is less than 0.450.'),Q('place','Round 76,351 to the nearest thousand.',['76,000','76,300','77,000','80,000'],0,'The hundreds digit is 3, so round down.'),
+Q('integers','What is −13 + 8?',['−21','−5','5','21'],1,'−13 + 8 = −5.'),Q('integers','What is 9 − (−6)?',['−15','−3','3','15'],3,'9 + 6 = 15.'),Q('integers','What is (−6) × (−5)?',['−30','−11','11','30'],3,'Two negatives multiply to a positive.'),
+Q('fractions','What is 3/10 + 1/5?',['2/15','4/15','1/2','4/10'],2,'1/5 = 2/10, giving 5/10 = 1/2.'),Q('fractions','What is 3/4 of 28?',['7','14','21','24'],2,'28 ÷ 4 × 3 = 21.'),Q('fractions','What is 3 1/4 − 1 1/2?',['1 1/4','1 3/4','2 1/4','2 3/4'],1,'3 1/4 − 1 2/4 = 1 3/4.'),
+Q('decimals','What is 0.7 × 0.3?',['0.021','0.21','2.1','21'],1,'7 × 3 = 21 with two decimal places.'),Q('decimals','What is 15% of 240?',['24','30','36','40'],2,'0.15 × 240 = 36.'),Q('decimals','A $80 backpack is discounted 25%. What is the new price?',['$20','$55','$60','$65'],2,'Subtract $20 from $80.'),
+Q('factors','What is the greatest common factor of 20 and 30?',['5','10','15','20'],1,'10 is the largest shared factor.'),Q('factors','What is the least common multiple of 6 and 8?',['12','14','24','48'],2,'24 is the first shared multiple.'),Q('factors','What is 2⁴ + 3²?',['17','23','25','49'],2,'16 + 9 = 25.'),
+Q('order','Evaluate 7 + 5 × 3.',['22','36','26','42'],0,'7 + 15 = 22.'),Q('order','Evaluate (20 − 8) ÷ 4 + 5.',['7','8','9','12'],1,'12 ÷ 4 + 5 = 8.'),Q('order','Evaluate 6² − 5 × 4.',['11','16','24','124'],1,'36 − 20 = 16.'),
+Q('rates','Six markers cost $9. What do 14 markers cost?',['$18','$20','$21','$24'],2,'One marker costs $1.50; 14 cost $21.'),Q('rates','A cyclist travels 84 miles in 4 hours. What is the speed?',['18 mph','20 mph','21 mph','24 mph'],2,'84 ÷ 4 = 21 mph.'),Q('rates','The ratio of cats to dogs is 3:4. If there are 15 cats, how many dogs are there?',['12','18','20','24'],2,'Multiply the ratio by 5: 4 × 5 = 20.'),
+Q('algebra','Solve y + 19 = 53.',['24','34','42','72'],1,'53 − 19 = 34.'),Q('algebra','What comes next: 5, 11, 17, 23, …?',['27','28','29','31'],2,'Add 6.'),Q('algebra','Solve 5x − 7 = 28.',['5','6','7','9'],2,'Add 7 and divide by 5.'),
+Q('angles','One of two angles on a straight line is 138°. Find the other.',['32°','42°','52°','62°'],1,'180° − 138° = 42°.'),Q('angles','A triangle has angles 35° and 85°. Find the third.',['50°','60°','70°','80°'],1,'180° − 35° − 85° = 60°.'),Q('angles','Which shape has exactly one pair of parallel sides under the usual school definition?',['Square','Rectangle','Trapezoid','Rhombus'],2,'A trapezoid is typically taught as having one pair of parallel sides.'),
+Q('measure','What is the perimeter of a rectangle 9 m by 4 m?',['13 m','26 m','36 m','52 m'],1,'2(9 + 4) = 26 m.'),Q('measure','Find the area of a triangle with base 12 and height 5.',['17','30','60','120'],1,'1/2 × 12 × 5 = 30.'),Q('measure','A circle has radius 9 inches. What is its diameter?',['4.5 in','9 in','18 in','81 in'],2,'Diameter = 2 × radius.'),
+Q('data','Find the mean of 5, 7, 9, and 11.',['7','8','9','10'],1,'32 ÷ 4 = 8.'),Q('data','Find the median of 8, 2, 10, 6, 4.',['4','6','8','10'],1,'Sort: 2, 4, 6, 8, 10.'),Q('data','Find the mode of 2, 4, 4, 5, 8.',['2','4','5','8'],1,'4 occurs twice.'),
+Q('prob','A bag has 5 purple and 3 orange counters. What is P(orange)?',['3/5','3/8','5/8','1/8'],1,'3 favorable out of 8 total.'),Q('prob','A fair number cube is rolled. What is P(number greater than 4)?',['1/6','1/3','1/2','2/3'],1,'5 and 6: 2/6 = 1/3.'),Q('prob','A spinner has 4 equal sections, and a coin is flipped. How many outcomes are possible?',['4','6','8','16'],2,'4 × 2 = 8 outcomes.')
+];
+/* Additional original practice is generated from independently varied arithmetic contexts. */
+window.ISEE.practice={
+place:[Q('place','What is the value of 5 in 352,180?',['50','500','5,000','50,000'],3,'5 is in the ten-thousands place.'),Q('place','Round 64,783 to the nearest ten.',['64,700','64,780','64,800','65,000'],1,'The ones digit is 3.'),Q('place','Which is smallest?',['0.72','0.702','0.72','0.8'],1,'0.702 is smaller than 0.720.')],
+integers:[Q('integers','Compute −7 + 12.',['−19','−5','5','19'],2,'−7 + 12 = 5.'),Q('integers','Compute −3 − 8.',['−11','−5','5','11'],0,'Move 8 left from −3.'),Q('integers','Compute (−5) × 6.',['−30','−11','11','30'],0,'Opposite signs give a negative product.')],
+fractions:[Q('fractions','Compute 1/2 + 1/4.',['1/6','2/6','3/4','1'],2,'2/4 + 1/4 = 3/4.'),Q('fractions','What is 2/5 of 30?',['6','10','12','15'],2,'30 ÷ 5 × 2 = 12.'),Q('fractions','Compute 1 1/2 + 3/4.',['1 3/4','2','2 1/4','2 3/4'],2,'1 2/4 + 3/4 = 2 1/4.')],
+decimals:[Q('decimals','What is 0.8 × 0.5?',['0.04','0.4','4','40'],1,'8 × 5 = 40; place two decimal digits.'),Q('decimals','What is 10% of 350?',['3.5','25','35','350'],2,'Divide 350 by 10.'),Q('decimals','An item costs $60 and is 15% off. What is the discount?',['$6','$9','$15','$51'],1,'0.15 × 60 = 9.')],
+factors:[Q('factors','Find the greatest common factor of 12 and 18.',['3','6','9','36'],1,'6 divides both.'),Q('factors','Find the least common multiple of 3 and 5.',['8','10','15','30'],2,'15 is the first shared multiple.'),Q('factors','Compute 4² + 2².',['12','16','20','36'],2,'16 + 4 = 20.')],
+order:[Q('order','Compute 6 + 2 × 9.',['24','72','54','18'],0,'Multiply first: 6 + 18.'),Q('order','Compute (16 − 4) ÷ 6.',['2','3','4','12'],0,'12 ÷ 6 = 2.'),Q('order','Compute 3² + 5 × 2.',['19','28','24','14'],0,'9 + 10 = 19.')],
+rates:[Q('rates','Five apples cost $10. What do 8 apples cost?',['$12','$14','$16','$20'],2,'Each costs $2.'),Q('rates','A runner travels 24 miles in 4 hours. What is the rate?',['4 mph','6 mph','8 mph','12 mph'],1,'24 ÷ 4 = 6.'),Q('rates','The ratio of boys to girls is 2:3. If there are 12 boys, how many girls?',['15','18','20','24'],1,'Multiply both ratio terms by 6.')],
+algebra:[Q('algebra','Solve x − 8 = 15.',['7','17','23','25'],2,'Add 8.'),Q('algebra','What follows 4, 9, 14, 19, …?',['22','23','24','25'],2,'Add 5.'),Q('algebra','Solve 2x + 5 = 19.',['5','6','7','12'],2,'Subtract 5, divide by 2.')],
+angles:[Q('angles','A straight angle measures how many degrees?',['45°','90°','180°','360°'],2,'A straight angle measures 180°.'),Q('angles','A triangle has angles 80° and 40°. Find the third.',['40°','50°','60°','80°'],2,'180 − 80 − 40 = 60.'),Q('angles','How many right angles does a rectangle have?',['1','2','3','4'],3,'All four interior angles are 90°.')],
+measure:[Q('measure','Find the area of a 7-by-3 rectangle.',['10','20','21','42'],2,'7 × 3 = 21.'),Q('measure','Find the perimeter of a square of side 6.',['12','18','24','36'],2,'4 × 6 = 24.'),Q('measure','A circle has diameter 20. What is the radius?',['5','10','20','40'],1,'Half of 20 is 10.')],
+data:[Q('data','Find the mean of 2, 4, and 9.',['4','5','6','7'],1,'15 ÷ 3 = 5.'),Q('data','Find the median of 1, 6, 3, 9, 5.',['3','5','6','9'],1,'Sort the list and select the middle.'),Q('data','Find the range of 4, 7, 10, 15.',['7','9','11','15'],2,'15 − 4 = 11.')],
+prob:[Q('prob','A jar contains 4 blue and 6 red marbles. Find P(blue).',['2/5','3/5','4/6','1/4'],0,'4/10 = 2/5.'),Q('prob','What is P(heads) on a fair coin?',['1/4','1/2','2/3','1'],1,'One of two equally likely outcomes.'),Q('prob','A number cube is rolled. Find P(rolling 1).',['1/6','1/3','1/2','1'],0,'One favorable outcome out of six.')]
+};
